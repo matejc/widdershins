@@ -65,6 +65,9 @@ function convertToToc(source) {
 function processOperation(op, method, resource, options) {
 	var header = data.header;
 	var opName = (op.operationId ? op.operationId : data.subtitle);
+	if (op['x-title']) {
+		opName = op['x-title'];
+	}
 	content += '## ' + opName + '\n\n'; // TODO template?
 
 	var url = data.servers[0].url + method.path;
